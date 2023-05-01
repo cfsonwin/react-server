@@ -1,6 +1,8 @@
 # react-server
 
 ## Install node dependency library
-run ``` terminal
-npm install
+Using npm:
+
+``` bash
+$ npm install
 ```
