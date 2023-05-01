@@ -11,7 +11,7 @@
 >        "password": "YOUR PASSWORD"
 >    }
 >   ```
->   * Make sure there is a database name "ReactDemo", as well as two collections "todoList" and "applications" in this database
+> * Make sure there is a database name "ReactDemo", as well as two collections "todoList" and "applications" in this database
 4. Use Cross-origin resource sharing (CORS) mechanism to solve cross domain issue
 
 ## Install node dependency library
