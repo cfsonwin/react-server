@@ -1,6 +1,10 @@
 const { MongoClient, ObjectId, ServerApiVersion } = require("mongodb");
+const fs = require('fs');
 
-const uri = "mongodb+srv://cfsgent:Ccffss22@reactdeno.sjiwadf.mongodb.net/?retryWrites=true&w=majority";
+
+const config = fs.readFileSync('\config.json', 'utf8');
+
+const uri = `mongodb+srv://${JSON.parse(config).username}:${JSON.parse(config).password}@reactdeno.sjiwadf.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
