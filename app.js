@@ -37,6 +37,21 @@ app.get('/applications/:user', (req, res)=>{
     )
 })
 
+app.post('/applications/:user', (req, res)=>{
+    console.log(req.body);
+    mongodbConnection.createApplications(req.body).then(
+        data => res.status(200).send(data)
+    )
+})
+
+app.put('/applications/:user', (req, res)=>{
+    console.log(req.body);
+    const { _id, newSt } = req.body
+    mongodbConnection.updateCardSt(_id, "updateSt", parseInt(newSt)).then(
+        data => res.status(200).send(data)
+    )
+})
+
 app.get("/applications/:user/details/:id", (req, res)=>{
     const {user, id} = req.params
     mongodbConnection.getDetails(id).then(

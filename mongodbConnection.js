@@ -66,6 +66,43 @@ module.exports.getApplications = async (user) => {
     })
 }
 
+module.exports.createApplications = async (data) => {
+    console.log(data.card.image);
+    const insertResult = await applications.insertOne({
+        "card": {
+            "isrc": data.card.isrc,
+            "title": data.card.title,
+            "company": data.card.company,
+            "avatar": data.card.avatar,
+            "status": data.card.status
+        },
+        "infos": data.infos,
+        "user": data.user
+      })
+    const newItem = await applications.findOne({"_id": insertResult.insertedId})
+    return ({
+        "status":0, 
+        "data": newItem
+    })
+}
+
+module.exports.updateCardSt = async (id, action, newSt) => {
+    const query = {"_id": new ObjectId(id)}
+    if(action === "updateSt"){
+        await applications.updateOne(
+            query,
+            { $set: { "card.status": newSt } }
+        );
+        return ({
+            "status":0, 
+        })
+    }
+    return ({
+        "status":1, 
+    })
+}
+
+
 module.exports.getDetails = async (id) => {
     const query = {"_id": new ObjectId(id)}
     const result = await applications.findOne(query)
